@@ -1,24 +1,19 @@
-import { ValidacionClave } from "./constantes";
+import {
+  ValidacionClave,
+  claveValida,
+  controlErrores,
+  numeros,
+} from "./constantes";
 
-export const hayNumero = (clave: string): boolean => {
-  const numeros = "0123456789";
-  for (let i = 0; i < clave.length; i++) {
-    if (numeros.includes(clave[i])) {
-      return true;
-    }
-  }
-  return false;
+const noValidaNumeros: ValidacionClave = {
+  esValida: false,
+  error: "La clave debe tener números",
 };
 
+const hayNumero = (clave: string): boolean =>
+  [...clave].some((clave) => numeros.includes(clave));
+
 export const tieneNumeros = (clave: string): ValidacionClave => {
-  if (!hayNumero(clave)) {
-    return {
-      esValida: false,
-      error: "La clave debe tener números",
-    };
-  } else {
-    return {
-      esValida: true,
-    };
-  }
+  controlErrores(clave);
+  return !hayNumero(clave) ? noValidaNumeros : claveValida;
 };

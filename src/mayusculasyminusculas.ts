@@ -1,34 +1,25 @@
-import { ValidacionClave } from "./constantes";
+import {
+  ValidacionClave,
+  mayusculas,
+  minusculas,
+  controlErrores,
+  claveValida,
+} from "./constantes";
 
-export const tieneMayusculas = (clave: string): boolean => {
-  const mayusculas: string = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-  for (let i = 0; i < clave.length; i++) {
-    if (mayusculas.includes(clave[i])) {
-      return true;
-    }
-  }
-  return false;
+const noValidaMayusculasYMinusculas: ValidacionClave = {
+  esValida: false,
+  error: "La clave debe tener mayúsculas y minúsculas",
 };
 
-export const tieneMinusculas = (clave: string): boolean => {
-  const minusculas: string = "abcdefghijklmnñopqrstuvwxyz";
-  for (let i = 0; i < clave.length; i++) {
-    if (minusculas.includes(clave[i])) {
-      return true;
-    }
-  }
-  return false;
-};
+const tieneMayusculas = (clave: string): boolean =>
+  [...clave].some((clave) => mayusculas.includes(clave));
+
+const tieneMinusculas = (clave: string): boolean =>
+  [...clave].some((clave) => minusculas.includes(clave));
 
 export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
-  if (!tieneMayusculas(clave) || !tieneMinusculas(clave)) {
-    return {
-      esValida: false,
-      error: "La clave debe tener mayúsculas y minúsculas",
-    };
-  } else {
-    return {
-      esValida: true,
-    };
-  }
+  controlErrores(clave);
+  return !tieneMayusculas(clave) || !tieneMinusculas(clave)
+    ? noValidaMayusculasYMinusculas
+    : claveValida;
 };

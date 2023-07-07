@@ -4,6 +4,25 @@ import {
 } from "./tieneCaracteresEspeciales";
 
 describe("hayCaracteresEspeciales", () => {
+  it("debería devolver un throw si clave es undefined", () => {
+    // Arrange
+    const clave: any = undefined;
+
+    // Act
+    const result = () => tieneCaracteresEspeciales(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si las entradas son null", () => {
+    // Arrange
+    const clave: any = null;
+
+    // Act
+    const result = () => tieneCaracteresEspeciales(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
   it("Debe devolver true si la clave contiene caracteres especiales. Caso contrario, false", () => {
     // Arrange
     const clave = "Hola, mundo";

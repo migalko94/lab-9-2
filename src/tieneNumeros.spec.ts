@@ -1,31 +1,23 @@
-import { hayNumero, tieneNumeros } from "./tieneNumeros";
-
-describe("hayNumero", () => {
-  it("Debe devolver true si la clave contiene números. Caso contrario, false", () => {
-    // Arrange
-    const clave = "Hola, mundo";
-
-    const resultadoEsperado = false;
-    // Act
-    const resultadoFuncion = hayNumero(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-  it("Debe devolver true si la clave contiene números. Caso contrario, false", () => {
-    // Arrange
-    const clave = "Hola, usuario1234";
-
-    const resultadoEsperado = true;
-    // Act
-    const resultadoFuncion = hayNumero(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-});
-
+import { tieneNumeros } from "./tieneNumeros";
 describe("tieneNumeros", () => {
+  it("debería devolver un throw si clave es undefined", () => {
+    // Arrange
+    const clave: any = undefined;
+    // Act
+    const result = () => tieneNumeros(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si las entradas son null", () => {
+    // Arrange
+    const clave: any = null;
+    // Act
+    const result = () => tieneNumeros(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
   it("Debe devolver el objeto ValidacionClave con true si la clave contiene números. Caso contrario, false indicando el mensaje de error correspondiente", () => {
     // Arrange
     const clave = "Hola, mundo";

@@ -1,47 +1,27 @@
-import { hayNombreUsuario, tieneNombreUsuario } from "./tieneNombreUsuario";
-
-describe("hayNombreUsuario", () => {
-  it("Debe devolver true si la clave contiene el nombre de usuario. Caso contrario, false", () => {
-    // Arrange
-    const nombreUsuario = "UsuarioEjemplo1234";
-    const clave = "1234";
-
-    const resultadoEsperado = false;
-    // Act
-    const resultadoFuncion = hayNombreUsuario(nombreUsuario, clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-
-  it("Debe devolver true si la clave contiene el nombre de usuario. Caso contrario, false", () => {
-    // Arrange
-    const nombreUsuario = "UsuarioEjemplo1234";
-    const clave = "UsuarioEjemplo";
-
-    const resultadoEsperado = false;
-    // Act
-    const resultadoFuncion = hayNombreUsuario(nombreUsuario, clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-
-  it("Debe devolver true si la clave contiene el nombre de usuario. Caso contrario, false", () => {
-    // Arrange
-    const nombreUsuario = "UsuarioEjemplo1234";
-    const clave = "Clave€€_UsuarioEjemplo1234";
-
-    const resultadoEsperado = true;
-    // Act
-    const resultadoFuncion = hayNombreUsuario(nombreUsuario, clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-});
+import { tieneNombreUsuario } from "./tieneNombreUsuario";
 
 describe("tieneNombreUsuario", () => {
+  it("debería devolver un throw si clave es undefined", () => {
+    // Arrange
+    const clave: any = undefined;
+    const nombreUsuario = "Aleatorio1";
+
+    // Act
+    const result = () => tieneNombreUsuario(nombreUsuario, clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si las entradas son null", () => {
+    // Arrange
+    const clave: any = null;
+    const nombreUsuario = "Aleatorio1";
+    // Act
+    const result = () => tieneNombreUsuario(nombreUsuario, clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
   it("Debe devolver el objeto ValidacionClave con true si la clave no contiene el nombre de usuario. Caso contrario, false indicando el mensaje de error correspondiente", () => {
     // Arrange
     const nombreUsuario = "UsuarioEjemplo1234";

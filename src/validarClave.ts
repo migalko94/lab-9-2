@@ -1,12 +1,10 @@
-import { ValidacionClave } from "./constantes";
+import { ValidacionClave, claveValida } from "./constantes";
 import { tieneMayusculasYMinusculas } from "./mayusculasyminusculas";
 import { tieneNumeros } from "./tieneNumeros";
 import { tieneCaracteresEspeciales } from "./tieneCaracteresEspeciales";
 import { tieneLongitudMinima } from "./tieneLongitudMinima";
 import { tieneNombreUsuario } from "./tieneNombreUsuario";
 import { tienePalabrasComunes } from "./tienePalabrasComunes";
-
-import "./style.css";
 
 export const validarClave = (
   nombreUsuario: string,
@@ -21,28 +19,28 @@ export const validarClave = (
   const contenidoPalabrasComunes = tienePalabrasComunes(clave, commonPasswords);
 
   if (!claveTieneMayusculasYMinusculas.esValida) {
-    return { esValida: false, error: claveTieneMayusculasYMinusculas.error };
+    return claveTieneMayusculasYMinusculas;
   }
 
   if (!claveTieneNumeros.esValida) {
-    return { esValida: false, error: claveTieneNumeros.error };
+    return claveTieneNumeros;
   }
 
   if (!claveTieneCaracteresEspeciales.esValida) {
-    return { esValida: false, error: claveTieneCaracteresEspeciales.error };
+    return claveTieneCaracteresEspeciales;
   }
 
   if (!claveTieneLongitudMinima.esValida) {
-    return { esValida: false, error: claveTieneLongitudMinima.error };
+    return claveTieneLongitudMinima;
   }
 
   if (!contenidoNombreUsuario.esValida) {
-    return { esValida: false, error: contenidoNombreUsuario.error };
+    return contenidoNombreUsuario;
   }
 
   if (!contenidoPalabrasComunes.esValida) {
-    return { esValida: false, error: contenidoPalabrasComunes.error };
+    return contenidoPalabrasComunes;
   }
 
-  return { esValida: true };
+  return claveValida;
 };

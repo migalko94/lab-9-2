@@ -1,62 +1,26 @@
-import {
-  tieneMayusculas,
-  tieneMayusculasYMinusculas,
-  tieneMinusculas,
-} from "./mayusculasyminusculas";
-
-describe("tieneMayusculas", () => {
-  it("Debe devolver true si la clave contiene mayúsculas. Caso contrario, false", () => {
-    // Arrange
-    const clave = "Hola, mundo";
-
-    const resultadoEsperado = true;
-    // Act
-    const resultadoFuncion = tieneMayusculas(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-
-  it("Debe devolver true si la clave contiene mayúsculas. Caso contrario, false", () => {
-    // Arrange
-    const clave = "hola, mundo";
-
-    const resultadoEsperado = false;
-    // Act
-    const resultadoFuncion = tieneMayusculas(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-});
-
-describe("tieneMinusculas", () => {
-  it("Debe devolver true si la clave contiene minúsculas. Caso contrario, false", () => {
-    // Arrange
-    const clave = "Hola, mundo";
-
-    const resultadoEsperado = true;
-    // Act
-    const resultadoFuncion = tieneMinusculas(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-
-  it("Debe devolver true si la clave contiene minúsculas. Caso contrario, false", () => {
-    // Arrange
-    const clave = "HOLA, MUNDO";
-
-    const resultadoEsperado = false;
-    // Act
-    const resultadoFuncion = tieneMinusculas(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-});
+import { tieneMayusculasYMinusculas } from "./mayusculasyminusculas";
 
 describe("tieneMayusculasYMinusculas", () => {
+  it("debería devolver un throw si clave es undefined", () => {
+    // Arrange
+    const clave: any = undefined;
+
+    // Act
+    const result = () => tieneMayusculasYMinusculas(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si las entradas son null", () => {
+    // Arrange
+    const clave: any = null;
+
+    // Act
+    const result = () => tieneMayusculasYMinusculas(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
   it("Debe devolver el objeto ValidacionClave con true si la clave contiene mayúsculas y minúsculas. Caso contrario, false indicando el mensaje de error correspondiente", () => {
     // Arrange
     const clave = "Hola, mundo";

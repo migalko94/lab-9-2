@@ -1,25 +1,15 @@
-import { ValidacionClave } from "./constantes";
+import { ValidacionClave, claveValida, controlErrores } from "./constantes";
 
-//Utilizamos replace y regex
-export const esLongitudMinima = (clave: string): boolean => {
-  const claveSinEspacios = clave.replace(/\s+/g, "");
-
-  if (claveSinEspacios.length >= 8) {
-    return true;
-  }
-
-  return false;
+const noValidaLongitud: ValidacionClave = {
+  esValida: false,
+  error: "La clave debe tener una longitud mínima de 8 caracteres",
 };
 
+//Utilizamos replace y regex
+const esLongitudMinima = (clave: string): boolean =>
+  clave.replace(/\s+/g, "").length >= 8;
+
 export const tieneLongitudMinima = (clave: string): ValidacionClave => {
-  if (!esLongitudMinima(clave)) {
-    return {
-      esValida: false,
-      error: "La clave debe tener una longitud mínima de 8 caracteres",
-    };
-  } else {
-    return {
-      esValida: true,
-    };
-  }
+  controlErrores(clave);
+  return !esLongitudMinima(clave) ? noValidaLongitud : claveValida;
 };

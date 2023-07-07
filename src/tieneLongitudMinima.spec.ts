@@ -1,42 +1,25 @@
-import { esLongitudMinima, tieneLongitudMinima } from "./tieneLongitudMinima";
-
-describe("esLongitudMinima", () => {
-  it("Debe devolver true si la clave tiene una longitud mínima de 8 caracteres. Caso contrario, false", () => {
-    // Arrange
-    const clave = "Hola";
-
-    const resultadoEsperado = false;
-    // Act
-    const resultadoFuncion = esLongitudMinima(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-  it("Debe devolver true si la clave tiene una longitud mínima de 8 caracteres. Caso contrario, false", () => {
-    // Arrange
-    const clave = "1_2_3_4_";
-
-    const resultadoEsperado = true;
-    // Act
-    const resultadoFuncion = esLongitudMinima(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-  it("Debe devolver true si la clave tiene una longitud mínima de 8 caracteres. Caso contrario, false", () => {
-    // Arrange
-    const clave = "1234567 ";
-
-    const resultadoEsperado = false;
-    // Act
-    const resultadoFuncion = esLongitudMinima(clave);
-
-    // Assert
-    expect(resultadoFuncion).toBe(resultadoEsperado);
-  });
-});
+import { tieneLongitudMinima } from "./tieneLongitudMinima";
 
 describe("tieneLongitudMinima", () => {
+  it("debería devolver un throw si clave es undefined", () => {
+    // Arrange
+    const clave: any = undefined;
+
+    // Act
+    const result = () => tieneLongitudMinima(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si las entradas son null", () => {
+    // Arrange
+    const clave: any = null;
+
+    // Act
+    const result = () => tieneLongitudMinima(clave);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
   it("Debe devolver el objeto ValidacionClave con true si la clave tiene una longitud mínima de 8 caracteres. Caso contrario, false indicando el mensaje de error correspondiente", () => {
     // Arrange
     const clave = "Hola";
