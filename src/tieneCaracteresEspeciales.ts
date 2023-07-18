@@ -10,12 +10,12 @@ const noValidaCaracteresEspeciales: ValidacionClave = {
   error: "La clave debe tener caracteres especiales",
 };
 
-export const hayCaracteresEspeciales = (clave: string): boolean =>
+const hayCaracteresEspeciales = (clave: string): boolean =>
   [...caracteresEspeciales].some((caracter) => clave.includes(caracter));
 
 export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
   controlErrores(clave);
-  return !hayCaracteresEspeciales(clave)
-    ? noValidaCaracteresEspeciales
-    : claveValida;
+  return hayCaracteresEspeciales(clave)
+    ? claveValida
+    : noValidaCaracteresEspeciales;
 };

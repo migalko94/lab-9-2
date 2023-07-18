@@ -15,5 +15,5 @@ const hayNumero = (clave: string): boolean =>
 
 export const tieneNumeros = (clave: string): ValidacionClave => {
   controlErrores(clave);
-  return !hayNumero(clave) ? noValidaNumeros : claveValida;
+  return hayNumero(clave) ? claveValida : noValidaNumeros;
 };

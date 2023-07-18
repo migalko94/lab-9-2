@@ -19,7 +19,7 @@ const tieneMinusculas = (clave: string): boolean =>
 
 export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
   controlErrores(clave);
-  return !tieneMayusculas(clave) || !tieneMinusculas(clave)
-    ? noValidaMayusculasYMinusculas
-    : claveValida;
+  return tieneMayusculas(clave) && tieneMinusculas(clave)
+    ? claveValida
+    : noValidaMayusculasYMinusculas;
 };

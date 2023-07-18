@@ -11,5 +11,5 @@ const esLongitudMinima = (clave: string): boolean =>
 
 export const tieneLongitudMinima = (clave: string): ValidacionClave => {
   controlErrores(clave);
-  return !esLongitudMinima(clave) ? noValidaLongitud : claveValida;
+  return esLongitudMinima(clave) ? claveValida : noValidaLongitud;
 };
