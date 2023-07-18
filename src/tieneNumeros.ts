@@ -11,7 +11,7 @@ const noValidaNumeros: ValidacionClave = {
 };
 
 const hayNumero = (clave: string): boolean =>
-  [...clave].some((clave) => numeros.includes(clave));
+  [...numeros].some((numero) => clave.includes(numero));
 
 export const tieneNumeros = (clave: string): ValidacionClave => {
   controlErrores(clave);

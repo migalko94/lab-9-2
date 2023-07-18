@@ -2,6 +2,85 @@ import { validarClave } from "./validarClave";
 import { commonPasswords } from "./constantes";
 
 describe("validarClave", () => {
+  it("debería devolver un throw si el nombre de usuario es undefined", () => {
+    // Arrange
+    const nombreUsuario: any = undefined;
+    const clave = "€89Bvalida";
+
+    // Act
+    const result = () => validarClave(nombreUsuario, clave, commonPasswords);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si el nombre de usuario es null", () => {
+    // Arrange
+    const nombreUsuario: any = null;
+    const clave = "€89Bvalida";
+
+    // Act
+    const result = () => validarClave(nombreUsuario, clave, commonPasswords);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si clave es undefined", () => {
+    // Arrange
+    const nombreUsuario = "Usuario1234";
+    const clave: any = undefined;
+
+    // Act
+    const result = () => validarClave(nombreUsuario, clave, commonPasswords);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si clave es null", () => {
+    // Arrange
+    const nombreUsuario = "Usuario1234";
+    const clave: any = null;
+
+    // Act
+    const result = () => validarClave(nombreUsuario, clave, commonPasswords);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si el array de palabras comunes es undefined", () => {
+    // Arrange
+    const nombreUsuario = "Usuario1234";
+    const clave = "€89Bvalida";
+    const commonPasswords: any = undefined;
+
+    // Act
+    const result = () => validarClave(nombreUsuario, clave, commonPasswords);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si el array de palabras comunes es null", () => {
+    // Arrange
+    const nombreUsuario = "Usuario1234";
+    const clave = "ClaveAleatoria";
+    const commonPasswords: any = null;
+
+    // Act
+    const result = () => validarClave(nombreUsuario, clave, commonPasswords);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
+
+  it("debería devolver un throw si el array de palabras está vacío", () => {
+    // Arrange
+    const nombreUsuario = "Usuario1234";
+    const clave = "€89Bvalida";
+    const commonPasswords: string[] = [];
+
+    // Act
+    const result = () => validarClave(nombreUsuario, clave, commonPasswords);
+    // Assert
+    expect(result).toThrowError("El parámetro introducido no es correcto");
+  });
   it("Debe devolver un objeto indicando si la clave es válida. Caso de no serlo, además de mostrar que no lo es, también el primer error que encuentre. Si la clave no tiene mayúsculas y minúsculas, no es válida y debe mostrarse este tipo de error", () => {
     // Arrange
 

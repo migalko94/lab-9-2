@@ -11,7 +11,7 @@ const noValidaCaracteresEspeciales: ValidacionClave = {
 };
 
 export const hayCaracteresEspeciales = (clave: string): boolean =>
-  [...clave].some((clave) => caracteresEspeciales.includes(clave));
+  [...caracteresEspeciales].some((caracter) => clave.includes(caracter));
 
 export const tieneCaracteresEspeciales = (clave: string): ValidacionClave => {
   controlErrores(clave);

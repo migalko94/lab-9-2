@@ -12,10 +12,10 @@ const noValidaMayusculasYMinusculas: ValidacionClave = {
 };
 
 const tieneMayusculas = (clave: string): boolean =>
-  [...clave].some((clave) => mayusculas.includes(clave));
+  [...mayusculas].some((letra) => clave.includes(letra));
 
 const tieneMinusculas = (clave: string): boolean =>
-  [...clave].some((clave) => minusculas.includes(clave));
+  [...minusculas].some((letra) => clave.includes(letra));
 
 export const tieneMayusculasYMinusculas = (clave: string): ValidacionClave => {
   controlErrores(clave);

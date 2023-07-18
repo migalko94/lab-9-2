@@ -6,11 +6,22 @@ import { tieneLongitudMinima } from "./tieneLongitudMinima";
 import { tieneNombreUsuario } from "./tieneNombreUsuario";
 import { tienePalabrasComunes } from "./tienePalabrasComunes";
 
+const controlErroresValidarClave = (
+  nombreUsuario: string,
+  clave: string,
+  commonPasswords: string[]
+) => {
+  if (!clave || !nombreUsuario || !commonPasswords) {
+    throw new Error("El parámetro introducido no es correcto");
+  }
+};
+
 export const validarClave = (
   nombreUsuario: string,
   clave: string,
   commonPasswords: string[]
 ): ValidacionClave => {
+  controlErroresValidarClave(nombreUsuario, clave, commonPasswords);
   const claveTieneMayusculasYMinusculas = tieneMayusculasYMinusculas(clave);
   const claveTieneNumeros = tieneNumeros(clave);
   const claveTieneCaracteresEspeciales = tieneCaracteresEspeciales(clave);

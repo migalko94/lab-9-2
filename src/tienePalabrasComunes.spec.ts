@@ -12,7 +12,7 @@ describe("tienePalabrasComunes", () => {
     expect(result).toThrowError("El parámetro introducido no es correcto");
   });
 
-  it("debería devolver un throw si las entradas son null", () => {
+  it("debería devolver un throw si clave es null", () => {
     // Arrange
     const clave: any = null;
 
@@ -33,7 +33,7 @@ describe("tienePalabrasComunes", () => {
     expect(result).toThrowError("El parámetro introducido no es correcto");
   });
 
-  it("debería devolver un throw si el array de palabras comunes es undefined", () => {
+  it("debería devolver un throw si el array de palabras comunes es null", () => {
     // Arrange
     const clave = "ClaveAleatoria";
     const commonPasswords: any = null;
